@@ -28,6 +28,7 @@
               <input type="search" placeholder="Search Pokemon" v-model="searchPokemon"/>
             
               <input type="submit" class="search_button" @click.prevent="fetchPokemon">
+              <!-- <button class="search_button" ><i class="fa-solid fa-arrow-right"></i></button> -->
             </form>
   
         </div>
@@ -41,8 +42,8 @@
               <p>id: {{ pokemon.id }}</p>
             <h1>{{ pokemon.name }}</h1>
             <p>
-                Height: {{ pokemon.height }}
-            <br>Weight: {{ pokemon.weight }}
+                Height: {{ pokemon.height }} 
+            <br>Weight: {{ pokemon.weight }} 
             </p>
             <p>Abilities: {{ pokemon.abilities.join(", ") }}.</p>
             <p>Moves: {{ pokemon.moves.join(", ") }}.</p>
@@ -132,14 +133,40 @@ export default {
         this.pokemon.moves.push(kick.move.name)
       })
 
-    }
+    },
+    async fetchPikachu(){
+        try{
+          const response = await fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
+
+          if(!response.ok){
+            if(response.status===404){
+              alert(`Pokemon escaped.`)
+              return
+            }
+            else {
+              throw new Error(`HTTP Error`+ response.status)
+            }
+          }
+
+          const json = await response.json()
+
+          console.log(json)
+
+          this.addPokemon(json)
+
+        } catch (error) {
+          console.log(error)
+        }
+      }
     },
     // watch: {},
     // components: {},
     // mixins: [],
     // filters: {},
     // -- Lifecycle Methods
-    // created(){}
+    created(){
+      this.fetchPikachu()
+    }
     // -- End Lifecycle Methods
 }
 </script>
@@ -218,7 +245,7 @@ h1{
 }
 
 img{
-  min-height: 90%;
+  height: 90%;
 }
 
 .search_area{
@@ -258,7 +285,8 @@ input{
 
 .info_section{
   color: #cfca9d;
-  background: #3f3d2b;
+  background: rgb(142,135,97);
+  background: linear-gradient(163deg, #635e41 13%, rgba(59,53,25,1) 100%);
   box-shadow: inset 0px 0px 8px #00000090;
   height: 50%;
   width: 90%;
