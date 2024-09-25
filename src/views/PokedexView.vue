@@ -25,7 +25,7 @@
           <!-- Search input -->
 
             <form class="search_area">
-              <input type="search" placeholder="Search Pokemon" v-model="searchPokemon"/>
+              <input class="searchbar" type="search" placeholder="Search Pokemon" v-model="searchPokemon"/>
             
               <input type="submit" class="search_button" @click.prevent="fetchPokemon">
               <!-- <button class="search_button" ><i class="fa-solid fa-arrow-right"></i></button> -->
@@ -175,7 +175,7 @@ export default {
 
 h1{
   font-weight: 100;
-  font-size: 70px;
+  font-size: 4.375rem;
   margin: .2rem auto;
 }
 .pokedex{
@@ -236,6 +236,7 @@ h1{
 .image{
   /* background: #111; */
   border-radius: 20px;
+  margin: auto;
   height: 85%;
   width: 90%;
   box-shadow: inset 0px 0px 8px #00000080;
@@ -246,6 +247,7 @@ h1{
 
 img{
   height: 90%;
+  margin: auto;
 }
 
 .search_area{
@@ -257,14 +259,15 @@ img{
   gap: 1rem;
 }
 
-input{
+.searchbar{
   background: #c5cf8c;
   padding: 1rem;
+  width: 60%;
 }
 
 .search_button{
   font-size: 16px;
-  padding: .5rem .7rem;
+  padding: .3rem .5rem;
   border-radius: 20px;
   border: none;
   box-shadow: 0px 0px 5px #00000080;
@@ -318,8 +321,6 @@ input{
   gap: 4px 4px;
 }
 
-
-
 .thingie{
   background: #46dcf0;
   box-shadow: none;
@@ -330,4 +331,57 @@ input{
 .thingie:hover{
   box-shadow: 0px 0px 10px #cff9ff;
 }
+
+/* A bit of responsiveness */
+
+@media (max-width:992px){
+
+  .circle{
+    z-index: 99;
+  }
+
+  .column{
+    width: 100%;
+    height: 3%;
+    bottom: 0;
+    border-radius: 0px 0px 5px 5px;
+    border-top: 1px solid #00000020;
+    box-shadow: 0px 0px 5px #00000080;
+  } 
+
+  .pokedex{
+    margin: auto;
+    width: 80vw;
+    height: 80vh;
+    flex-direction: column;
+    align-items: center;
+  } 
+
+  .pokedex_left{
+    width: 100%;
+    min-height: 40vh;
+    flex-grow: 1;
+    border-radius: 40px 40px 5px 5px;
+    position: relative;
+  }
+
+  .search_area{
+    position: absolute;
+    top: 5px;
+    left: 100px;
+  }
+
+  .pokedex_right{
+    width: 100%;
+    height: 45vh;
+    flex-grow: 1;
+    border-radius: 5px 5px 40px 40px;
+  }
+
+  .blue_thingies{
+    width: 50%;
+  }
+
+}
+
 </style>
