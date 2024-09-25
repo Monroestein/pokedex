@@ -2,7 +2,7 @@
   <div id="app">
     <nav>
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/pokedex">Pokedex</router-link>
     </nav>
     <router-view/>
   </div>
@@ -14,7 +14,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #1b1e20;
 }
 
 nav {
@@ -23,10 +23,10 @@ nav {
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #2c5042;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #42b9a9;
 }
 </style>
