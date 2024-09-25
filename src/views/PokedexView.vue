@@ -27,7 +27,7 @@
             <form class="search_area">
               <input class="searchbar" type="search" placeholder="Search Pokemon" v-model="searchPokemon"/>
             
-              <input type="submit" class="search_button" @click.prevent="fetchPokemon">
+              <input type="submit" class="search_button" @click.prevent="catchPokemon(searchPokemon)">
               <!-- <button class="search_button" ><i class="fa-solid fa-arrow-right"></i></button> -->
             </form>
   
@@ -72,92 +72,23 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
+
 export default {
     name: 'pokedex-view',
     // props: {},
     data: function(){
         return {
-          searchPokemon:"",
-          pokemon:{
-            name:"",
-            id:0,
-            sprite:"",
-            weight:0,
-            height:0,
-            abilities: [],
-            moves: []
-          }
+          searchPokemon:"", 
         }
     },
-    // computed: {},
+    computed: {
+      ...mapState(['pokemon'])
+    },
     methods: {
-      async fetchPokemon(){
-        try{
-          const response = await fetch("https://pokeapi.co/api/v2/pokemon/"+this.searchPokemon.toLocaleLowerCase())
-
-          if(!response.ok){
-            if(response.status===404){
-              alert(`Pokemon escaped.`)
-              return
-            }
-            else {
-              throw new Error(`HTTP Error`+ response.status)
-            }
-          }
-
-          const json = await response.json()
-
-          console.log(json)
-
-          this.addPokemon(json)
-
-        } catch (error) {
-          console.log(error)
-        }
-      },
-    addPokemon(pokeData){
-      this.pokemon.name = pokeData.name
-      this.pokemon.sprite = pokeData.sprites.front_default
-      this.pokemon.id = pokeData.id
-      this.pokemon.weight = pokeData.weight
-      this.pokemon.height = pokeData.height
-
-      pokeData.abilities.forEach((punch)=>{
-        punch.ability.name
-        // console.log(punch.ability.name)
-        this.pokemon.abilities.push(punch.ability.name)
-      })
-
-      pokeData.moves.forEach((kick)=>{
-        kick.move.name
-        this.pokemon.moves.push(kick.move.name)
-      })
-
-    },
-    async fetchPikachu(){
-        try{
-          const response = await fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
-
-          if(!response.ok){
-            if(response.status===404){
-              alert(`Pokemon escaped.`)
-              return
-            }
-            else {
-              throw new Error(`HTTP Error`+ response.status)
-            }
-          }
-
-          const json = await response.json()
-
-          console.log(json)
-
-          this.addPokemon(json)
-
-        } catch (error) {
-          console.log(error)
-        }
-      }
+      
+      ...mapActions (['catchPokemon']),
+    
     },
     // watch: {},
     // components: {},
@@ -165,7 +96,7 @@ export default {
     // filters: {},
     // -- Lifecycle Methods
     created(){
-      this.fetchPikachu()
+      this.catchPokemon('pikachu')
     }
     // -- End Lifecycle Methods
 }
@@ -382,6 +313,24 @@ img{
     width: 50%;
   }
 
+}
+
+@media (min-width:993px){
+  .pokedex{
+    width: 80vw;
+  }
+}
+
+@media (min-width:1150px){
+  .pokedex{
+    width: 70vw;
+  }
+}
+
+@media (min-width:1595px){
+  .pokedex{
+    width: 60vw;
+  }
 }
 
 </style>
