@@ -27,8 +27,8 @@
             <form class="search_area">
               <input class="searchbar" type="search" placeholder="Search Pokemon" v-model="searchPokemon"/>
             
-              <input type="submit" class="search_button" @click.prevent="catchPokemon(searchPokemon)">
-              <!-- <button class="search_button" ><i class="fa-solid fa-arrow-right"></i></button> -->
+              <button type="submit" class="search_button" @click.prevent="catchPokemon(searchPokemon)"><i class="fa-solid fa-circle-right"></i></button>
+              <!-- <button class="search_button" @click="add"><i class="fa-solid fa-arrow-right"></i></button> -->
             </form>
   
         </div>
@@ -86,9 +86,10 @@ export default {
       ...mapState(['pokemon'])
     },
     methods: {
-      
       ...mapActions (['catchPokemon']),
-    
+      add(){
+        alert(`Hello`)
+      }
     },
     // watch: {},
     // components: {},
@@ -124,11 +125,12 @@ h1{
   border: 4px solid #daf8fc;
   box-shadow: 0px 0px 5px #00000080;
   border-radius: 100%;
-  height: 4.375rem;
-  width: 4.375rem;
+  height: 4rem;
+  width: 4rem;
   position: absolute;
   top: 2.5vh;
   left: 2vw;
+  z-index: 99;
 }
 
 .pokedex_left{
@@ -197,13 +199,12 @@ img{
 }
 
 .search_button{
-  font-size: 16px;
-  padding: .3rem .5rem;
-  border-radius: 20px;
+  font-size: 40px;
+  border-radius: 50%;
   border: none;
-  box-shadow: 0px 0px 5px #00000080;
-  background: #fcd450;
-  color: #a88616;
+  text-shadow: 0px 0px 5px #00000060;
+  background: transparent;
+  color: #fcd65a;
   cursor: pointer;
 }
 
@@ -296,7 +297,12 @@ img{
     position: relative;
   }
 
+  .image_container{
+    width: 50%;
+  }
+
   .search_area{
+    width: 80%;
     position: absolute;
     top: 5px;
     left: 100px;

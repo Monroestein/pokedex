@@ -54,7 +54,7 @@ export default new Vuex.Store({
 
         const json = await response.json()
 
-        console.log(json)
+        // console.log(json)
 
         commit('colocarNombre', json)
 
