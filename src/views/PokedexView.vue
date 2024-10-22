@@ -25,7 +25,7 @@
           <!-- Search input -->
 
             <form class="search_area">
-              <input class="searchbar" type="search" placeholder="Search Pokemon" v-model="searchPokemon"/>
+              <input class="searchbar" type="search" placeholder="Search Pokemon by name or ID" v-model="searchPokemon"/>
             
               <button type="submit" class="search_button" @click.prevent="catchPokemon(searchPokemon)"><i class="fa-solid fa-circle-right"></i></button>
               <!-- <button class="search_button" @click="add"><i class="fa-solid fa-arrow-right"></i></button> -->

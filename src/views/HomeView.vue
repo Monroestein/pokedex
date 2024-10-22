@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome!"/>
+    <HelloWorld msg="Pokédex"/>
   </div>
 </template>
 
@@ -15,3 +15,7 @@ export default {
   }
 }
 </script>
+
+<style>
+
+</style>
