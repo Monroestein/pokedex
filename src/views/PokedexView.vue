@@ -1,7 +1,7 @@
 //    がんばれ!  🌻
 
 <template>
-    <div> 
+    <div id="pokedex-parent"> 
     
       <div class="pokedex">
 
@@ -105,6 +105,10 @@ export default {
 
 <style scoped>
 
+.pokedex-parent{
+  margin: 0 auto;
+}
+
 h1{
   font-weight: 100;
   font-size: 4.375rem;
@@ -113,7 +117,7 @@ h1{
 .pokedex{
   margin: 2rem auto;
   height: 70vh;
-  width: 60vw;
+  width: 60dvw;
   /* background: #ad15151c; */
   display: flex;
   align-items: end;
@@ -270,6 +274,10 @@ img{
 
   .circle{
     z-index: 99;
+    height: 2.4rem;
+    width: 2.4rem;
+    top: 2vh;
+    left: 3.5vw;
   }
 
   .column{
@@ -298,14 +306,25 @@ img{
   }
 
   .image_container{
-    width: 50%;
+    width: 60vw;
   }
 
   .search_area{
-    width: 80%;
+    width: 100%;
     position: absolute;
-    top: 5px;
-    left: 100px;
+    top: 3.7vh;
+    left: 1vw;
+  }
+
+  .searchbar{
+    font-size: .8rem;
+    padding: .5rem;
+    width: 70%;
+  }
+
+  .search_button{
+    font-size: 30px;
+
   }
 
   .pokedex_right{
@@ -315,8 +334,19 @@ img{
     border-radius: 5px 5px 40px 40px;
   }
 
+  .info_section{
+    height: 70%;
+    width: 90%;
+    margin: 2rem auto 1.2rem auto;
+    border-radius: 10px;
+    overflow:auto;
+    /* scrollbar-width: thin; */
+    scrollbar-color: #444 #222;
+  }
+
   .blue_thingies{
     width: 50%;
+    height: 10%;
   }
 
 }
